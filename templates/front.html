@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+		    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        @viewport{
+            zoom: 1.0;
+            width: extend-to-zoom;
+        }
+        @-ms-viewport{
+            zoom: 1.0;
+            width: extend-to-zoom;
+        }
+  #title_div {
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: #0d0d0d;
+            width: 100%;
+        }
+
+   h2 {
+            border-style: hidden hidden solid hidden;
+            padding: 5%;
+              text-align: center;
+            font-family: 'Anton';
+            margin:auto;
+        }
+
+
+   #status {
+            margin-top: 5%;
+            margin-left: 5%;
+
+            width: 90%;
+            height: 50px;
+            background-color: #000;
+            font-family: apple-system;
+            font-size: 11pt;
+            font-style: bold;
+            color: #fff;
+        }
+   #image{
+   	margin-left:35%;
+   	width:35%;
+   	height:35%;
+   }
+
+   #status2 {
+            margin-top: 20px;
+            margin-left: 5%;
+            margin-bottom: 20px;
+            width: 90%;
+            height: 50px;
+            background-color: #000;
+            font-family: apple-system;
+            font-size: 11pt;
+            font-style: bold;
+            color: #fff;
+        }
+</style>
+</head>
+<body>
+<div id="title_div">
+       
+            <h2>QR Attendance System</h2>
+
+    </div>
+  <img id="image" src="https://www.qrcode-monkey.com/img/default-preview-qr.svg"> 
+  <div id="take_att">
+                    <form action="cam" method="POST" target="_self">
+                            <button id="status" type="submit">Take Attendance</button>
+                    </form>
+            <div id="show_data">
+                <form action="att" method="POST" target="_self">
+                    <button id="status2" type="submit">Show Details</button>
+                </form>
+            </div>
+            </div>
+</body>
+</html>

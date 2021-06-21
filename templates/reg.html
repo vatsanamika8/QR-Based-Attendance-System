@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scale=1.0,user-scalable=yes">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        @viewport{
+            zoom: 1.0;
+            width: extend-to-zoom;
+        }
+        @-ms-viewport{
+            zoom: 1.0;
+            width: extend-to-zoom;
+        }
+        h2 {
+            border-style: hidden hidden solid hidden;
+            padding: 5%;
+             text-align: center;
+            font-family: 'Anton';
+        }
+        
+        body {
+            margin: 0;
+            background-color: #cccccc;
+        }
+        #title_div {
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: #0d0d0d;
+            width: 100%;
+        }
+        
+        #form_style {
+            font-family: "Open Sans";
+        }
+        
+        h3 {
+            font-family: Calibri;
+            font-size: 25pt;
+            font-style: normal;
+            font-weight: bold;
+            color: Black;
+            text-align: center;
+            text-decoration: underline;
+        }
+        table {
+            font-family: Calibri;
+            color: white;
+            font-size: 9pt;
+            font-style: normal;
+            font-weight: bold;
+            background-color: #0d0d0d;
+            border-collapse: collapse;
+            border: 1px solid navy
+        }
+        
+        #status {
+            margin-top: 20px;
+            margin-left: 25%;
+            margin-bottom: 20px;
+            width: 50%;
+            height: 50px;
+            background-color: #000;
+            font-family: apple-system;
+            font-size: 11pt;
+            font-style: bold;
+            color: #fff;
+        }
+
+        #status2 {
+            margin-top: 1%;
+            margin-left: 25%;
+            margin-bottom: 20px;
+            width: 50%;
+            height: 50px;
+            background-color: #000;
+            font-family: apple-system;
+            font-size: 11pt;
+            font-style: bold;
+            color: #fff;
+        }
+        #Mobile{
+    float:right;
+    background-color: #0d0d0d;
+    height: 50px;
+    color: #fff;
+    margin-left: -50%;
+    margin-top: 0.5em;
+
+    border: none;
+
+
+}
+        
+        #FormDiv {
+            margin: 20px;
+        }
+    </style>
+      
+    <title>"QR Based Attendance System"</title>
+</head>
+
+<body>
+    <div id="title_div">
+
+            <h2>QR Based Attendance System</h2>
+    
+    </div>
+        <h3>DETAILS</h3>
+
+        <div id="FormDiv">
+
+            <form id="DataForm" method="POST" action="/responseMob" onsubmit="return validate();">
+                <table id="DataFormTable" align="center" cellpadding="10">
+                    <!----- ID number---------------------------------------------------------->
+                    <tr>
+                        <td>ID Number</td>
+                        <td><input type="text" id="ID" name="ID" maxlength="9" readonly value={{id}}>
+                        </td>
+                    </tr>
+
+                    <!----- First Name ---------------------------------------------------------->
+                    <tr>
+                        <td>FIRST NAME</td>
+                        <td><input type="text" id="First_Name" name="First_Name" maxlength="30" value={{FName}}> (max 30 characters a-z and A-Z)
+                        </td>
+                    </tr>
+
+                    <!----- Last Name ---------------------------------------------------------->
+                    <tr>
+                        <td>LAST NAME</td>
+                        <td><input type="text" id="Last_Name" name="Last_Name" maxlength="30" value={{LName}}> (max 30 characters a-z and A-Z)
+                        </td>
+                    </tr>
+
+
+
+                    <!----- Email Id ---------------------------------------------------------->
+                    <tr>
+                        <td>EMAIL ID</td>
+                        <td><input type="text" id="Email_Id" name="Email_Id" maxlength="100" value={{email}}></td>
+                    </tr>
+
+                    <!----- Mobile Number ---------------------------------------------------------->
+                    <tr>
+                        <td>MOBILE NUMBER</td>
+                        <td>
+                            <input type="text" id="Mobile_Number" name="Mobile_Number" maxlength="10" value={{mobile}}> (10 digit number)
+                        </td>
+                    </tr>
+
+
+                    <!----- Submit and Reset ------------------------------------------------->
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" name="Submit" value="Submit" />
+                            <input type="button" value="Reset" onclick="Clear()" />
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+            <div id="attlink">
+                    <form action="att" method="POST" target="_self">
+                            <button id="status" type="submit">Check Attendance</button>
+                    </form>
+            <div id="another">
+                <form action="red" method="POST" target="_self">
+                    <button id="status2" type="submit">Another ID?</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function numeric(inputtxt) {
+        var letterNumber = /^[0-9]+$/;
+        if ((inputtxt.value.match(letterNumber))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+ function validate()
+{
+ var error="";
+ var idField =document.getElementById("ID");
+ if(idField.value=="" || idField.value == "None")
+ {
+    error = " Please scan QR code";
+    alert(error);
+    return false;
+ }
+var firstname = document.getElementById( "First_Name" );
+ if( firstname.value == "" || /\d/.test(firstname.value))
+ {
+  error = " Please write correct first name ";
+  alert(error);
+  return false;
+ }
+ var lastname = document.getElementById( "Last_Name" );
+ if( lastname.value == "" || /\d/.test(lastname.value))
+ {
+  error = " Please write correct last name ";
+  alert(error);
+  return false;
+ }
+
+ var email = document.getElementById( "Email_Id" );
+ if( email.value == "" || email.value.indexOf( "@" ) == -1 )
+ {
+  error = " You Have To Write Valid Email Address. ";
+  alert(error);
+  return false;
+ }
+ var contactno= document.getElementById( "Mobile_Number" );
+ if( contactno.value == "" || contactno.value.length != 10 || contactno.value <=10)
+ {
+  error="Provide a valid Contact Number";
+  alert(error);
+  return false;
+ }
+ else
+ {
+  return true;
+ }
+}
+    function Clear() {
+        document.getElementById("ID").value = '';
+        document.getElementById("First_Name").value = '';
+        document.getElementById("Last_Name").value = '';
+        document.getElementById("Email_Id").value = '';
+        document.getElementById("Mobile_Number").value = '';
+        document.getElementById("status").value = '';
+    }
+</script>
+
+</html>

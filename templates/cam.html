@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        @viewport{
+            zoom: 1.0;
+            width: extend-to-zoom;
+        }
+        @-ms-viewport{
+            zoom: 1.0;
+            width: extend-to-zoom;
+        }
+        h2{
+            border-style: hidden hidden solid hidden;
+            padding: 5%;
+              text-align: center;
+            font-family: 'Anton';
+        }
+        
+        body {
+            margin: 0;
+            background-color: #cccccc;
+        }
+        
+        #webcam {
+            float: left;
+            width: 100%;
+            height: 100%;
+            margin-left: -25%;
+            margin-right: 0%;
+        }
+        #title_div {
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: #0d0d0d;
+            width: 100%;
+        }
+        #bg {
+            width: 100%;
+            height: 100%;
+            margin-top: 25px;
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-bottom: 25px;
+        }
+        
+        #videoStream {
+            margin-top: 50px;
+            margin-left: 0%;
+            margin-right: 0%;
+            width: 100%;
+            height: 100%;
+        }
+        #start {
+            margin-left: 50%;
+            background-color: white;
+            width: 50%;
+            height: 35px;
+            color: black;
+            border: 2px solid #4CAF50;
+            
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 75%;
+            opacity: 0;
+        }
+        
+        #start:hover {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        
+        #stop {
+            background-color: white;
+            border-radius: 8px;
+            margin-left: 50%;
+            text-align: center;
+            width: 50%;
+            height: 35px;
+            color: black;
+            border: 2px solid #f44336;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 75%;
+        }
+        
+        #stop:hover {
+            background-color: #f44336;
+            color: white;
+            border: none;
+        }
+        
+        #status {
+            margin-left: 25%;
+            margin-bottom: 20px;
+            width: 100%;
+            height: 50px;
+            background-color: #000;
+            color: #fff;
+        }
+
+    </style>
+   
+</head>
+
+<body>
+    <div id="title_div">
+              
+            <h2>QR Attendance System</h2>
+        
+    </div>
+
+    <div id="webcam">
+
+        <div id="videoStream">
+            <button id="start" onclick="startFunction()">START</button>
+            <button id="stop" onclick="stopFunction()">STOP</button><br><br>
+            <img id="bg" src="{{url_for('video_feed_mob')}}"><br><br>
+            <form action="reg" method="POST" target="_self">
+                <button id="status" type="submit">Give Attendance</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function startFunction() {
+        var element = document.getElementById('bg');
+        var b = document.getElementById('status');
+        var s = document.getElementById('start');
+        var st = document.getElementById('stop')
+        element.style.opacity = "1";
+        b.style.opacity = "1";
+        s.style.opacity = "0";
+        st.style.opacity = "1";
+    }
+
+    function stopFunction() {
+        var element = document.getElementById('bg');
+        var b = document.getElementById('status');
+        var s = document.getElementById('stop');
+        var st = document.getElementById('start')
+        s.style.opacity = "0";
+        st.style.opacity = "1";
+        element.style.opacity = "0";
+        b.style.opacity = "0";
+    }
+</script>
+
+</html>
